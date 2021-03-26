@@ -3,6 +3,7 @@ import { Schema as MongooseSchema } from 'mongoose';
 import {UserModel} from '../users/models/user.model'
 import {GraphQLScalarType} from 'graphql'
 import {OrganizationModel} from '../organization/models/organization.model'
+import {CommentModel} from '../comments/models/comment.model'
 
 export enum EventTypes {
     music,
@@ -84,9 +85,8 @@ export class ListEventInput {
     @Field(() => OrganizationModel)
     organization?: OrganizationModel
 
-    //TODO
-    // @Field(() => )
-    // comments?:
+    @Field(() => [CommentModel])
+    comments?: CommentModel[];
 
     @Field(() => [UserModel], { nullable: true })
     going?: UserModel[];
@@ -121,9 +121,8 @@ export class UpdateEventInput {
     @Field(() => OrganizationModel)
     organization?: OrganizationModel
 
-    //TODO
-    // @Field(() => )
-    // comments?:
+    @Field(() => [CommentModel])
+    comments?: CommentModel[];
 
     @Field(() => [UserModel], { nullable: true })
     going?: UserModel[];

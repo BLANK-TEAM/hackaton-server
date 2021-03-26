@@ -5,6 +5,7 @@ import {DateTime, EventTypes} from '../event.input'
 import {GraphQLScalarType} from 'graphql'
 import {UserModel} from '../../users/models/user.model'
 import {OrganizationModel} from '../../organization/models/organization.model'
+import {CommentModel} from '../../comments/models/comment.model'
 
 @ObjectType()
 @Schema()
@@ -36,9 +37,9 @@ export class EventModel {
     @Prop()
     organization: OrganizationModel
 
-    //TODO
-    // @Field(() => )
-    // comments:
+    @Field(() => [CommentModel])
+    @Prop()
+    comments: CommentModel[];
 
     @Field(() => [UserModel])
     @Prop()
