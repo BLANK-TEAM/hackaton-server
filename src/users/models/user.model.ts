@@ -12,6 +12,10 @@ export class UserModel {
     @Prop()
     name: string;
 
+    @Field(() => String, { nullable: true })
+    @Prop()
+    password?: string;
+
     @Field(() => String)
     @Prop()
     description: string;

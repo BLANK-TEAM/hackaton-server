@@ -8,9 +8,9 @@ import { MONGO_URI } from './config/config';
 import { UserModule } from './users/models/user.module';
 import { UsersResolver } from './users/users.resolver';
 import { UsersService } from './users/users.service';
-import { OrganizationModule } from './organization/organization.module';
-import { PostService } from './post/post.service';
-import { PostModule } from './post/post.module';
+import { AuthModule } from './auth/auth.module';
+import { CommentsResolver } from './comments/comments.resolver';
+import { CommentsService } from './comments/comments.service';
 
 @Module({
   imports: [
@@ -20,10 +20,9 @@ import { PostModule } from './post/post.module';
     }),
     MongooseModule.forRoot(MONGO_URI),
     UserModule,
-    OrganizationModule,
-    PostModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PostService],
+  providers: [AppService, CommentsResolver, CommentsService],
 })
-export class AppModule { }
+export class AppModule {}
