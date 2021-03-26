@@ -9,6 +9,8 @@ import { UserModule } from './users/models/user.module';
 import { UsersResolver } from './users/users.resolver';
 import { UsersService } from './users/users.service';
 import { AuthModule } from './auth/auth.module';
+import { CommentsResolver } from './comments/comments.resolver';
+import { CommentsService } from './comments/comments.service';
 
 @Module({
   imports: [
@@ -21,6 +23,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CommentsResolver, CommentsService],
 })
 export class AppModule {}
