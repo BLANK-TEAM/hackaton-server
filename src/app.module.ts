@@ -8,6 +8,9 @@ import { MONGO_URI } from './config/config';
 import { UserModule } from './users/models/user.module';
 import { UsersResolver } from './users/users.resolver';
 import { UsersService } from './users/users.service';
+import { OrganizationModule } from './organization/organization.module';
+import { PostService } from './post/post.service';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -17,8 +20,10 @@ import { UsersService } from './users/users.service';
     }),
     MongooseModule.forRoot(MONGO_URI),
     UserModule,
+    OrganizationModule,
+    PostModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PostService],
 })
 export class AppModule { }

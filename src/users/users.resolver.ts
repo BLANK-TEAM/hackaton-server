@@ -1,40 +1,39 @@
-import { Inject } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Schema as MongooseSchema } from 'mongoose';
 
-import { User } from './models/user.model';
+import { UserModel } from './models/user.model';
 import { CreateUserInput, ListUserInput, UpdateUserInput } from './user.inputs';
 import { UsersService } from './users.service'; 
 
-@Resolver(() => User)
+@Resolver(() => UserModel)
 export class UsersResolver {
     constructor(private readonly usersService: UsersService) {}
 
-    @Query(() => User)
+    @Query(() => UserModel)
     async user(
         @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
     ) {
         return this.usersService.getById(_id);
     }
 
-    @Query(() => [User])
+    @Query(() => [UserModel])
     async users(
         @Args('filters', { nullable: true }) filters?: ListUserInput,
     ) {
         return this.usersService.list(filters);
     }
 
-    @Mutation(() => User)
+    @Mutation(() => UserModel)
     async createUser(@Args('payload') payload: CreateUserInput) {
         return this.usersService.createUser(payload);
     }
 
-    @Mutation(() => User)
+    @Mutation(() => UserModel)
     async updateUser(@Args('payload') payload: UpdateUserInput) {
         return this.usersService.updateUser(payload);
     }
 
-    @Mutation(() => User)
+    @Mutation(() => UserModel)
     async deleteUser(
         @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
     ) {

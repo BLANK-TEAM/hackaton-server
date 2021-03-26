@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema } from 'mongoose';
-import { User, UserDocument } from './models/user.model';
+import { UserModel, UserDocument } from './models/user.model';
 import { CreateUserInput, UpdateUserInput, ListUserInput } from './user.inputs';
 
 @Injectable()
 export class UsersService {
     constructor(
-        @InjectModel(User.name) private userModel: Model<UserDocument>,
+        @InjectModel(UserModel.name) private userModel: Model<UserDocument>,
     ) {}
 
     async list(filters: ListUserInput) {

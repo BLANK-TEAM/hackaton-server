@@ -1,7 +1,8 @@
 import {Field, InputType } from '@nestjs/graphql'
 import { Schema as MongooseSchema } from 'mongoose';
-import {User} from '../users/models/user.model'
+import {UserModel} from '../users/models/user.model'
 import {GraphQLScalarType} from 'graphql'
+import {OrganizationModel} from '../organization/models/organization.model'
 
 export enum EventTypes {
     music,
@@ -22,12 +23,15 @@ export enum EventTypes {
   date: DateTime
 * */
 
-type DateTime = GraphQLScalarType;
+export type DateTime = GraphQLScalarType;
 
 @InputType()
-export class CreatePostInput {
+export class CreateEventInput {
     @Field(() => String)
     title: string;
+
+    @Field(() => [String])
+    photoUrls: string[];
 
     @Field(() => String)
     description: string;
@@ -35,17 +39,20 @@ export class CreatePostInput {
     @Field(() => EventTypes)
     type: EventTypes;
 
+    @Field(() => String)
+    address: string;
+
     @Field(() => [String])
     tags: string[];
 
-    // @Field(() => )
-    // organization: O
+    @Field(() => OrganizationModel)
+    organization: OrganizationModel
 
     // @Field(() => )
     // comments:
 
-    @Field(() => [User])
-    going: User[];
+    @Field(() => [UserModel])
+    going: UserModel[];
 
     @Field(() => GraphQLScalarType)
     date: DateTime;
@@ -53,11 +60,14 @@ export class CreatePostInput {
 }
 
 @InputType()
-export class ListPostInput {
+export class ListEventInput {
     _id?: MongooseSchema.Types.ObjectId;
 
     @Field(() => String, { nullable: true })
     title?: string;
+
+    @Field(() => [String])
+    photoUrls: string[];
 
     @Field(() => String, { nullable: true })
     description?: string;
@@ -65,17 +75,21 @@ export class ListPostInput {
     @Field(() => EventTypes, { nullable: true })
     type?: EventTypes;
 
+    @Field(() => String)
+    address?: string;
+
     @Field(() => [String], { nullable: true })
     tags?: string[];
 
+    @Field(() => OrganizationModel)
+    organization?: OrganizationModel
+
     //TODO
-    // @Field(() => )
-    // organization?: O
     // @Field(() => )
     // comments?:
 
-    @Field(() => [User], { nullable: true })
-    going?: User[];
+    @Field(() => [UserModel], { nullable: true })
+    going?: UserModel[];
 
     @Field(() => GraphQLScalarType, { nullable: true })
     date?: DateTime;
@@ -83,11 +97,14 @@ export class ListPostInput {
 }
 
 @InputType()
-export class UpdatePostInput {
+export class UpdateEventInput {
     _id?: MongooseSchema.Types.ObjectId;
 
     @Field(() => String, { nullable: true })
     title?: string;
+
+    @Field(() => [String])
+    photoUrls: string[];
 
     @Field(() => String, { nullable: true })
     description?: string;
@@ -95,17 +112,21 @@ export class UpdatePostInput {
     @Field(() => EventTypes, { nullable: true })
     type?: EventTypes;
 
+    @Field(() => String)
+    address?: string;
+
     @Field(() => [String], { nullable: true })
     tags?: string[];
 
+    @Field(() => OrganizationModel)
+    organization?: OrganizationModel
+
     //TODO
-    // @Field(() => )
-    // organization?: O
     // @Field(() => )
     // comments?:
 
-    @Field(() => [User], { nullable: true })
-    going?: User[];
+    @Field(() => [UserModel], { nullable: true })
+    going?: UserModel[];
 
     @Field(() => GraphQLScalarType, { nullable: true })
     date?: DateTime;

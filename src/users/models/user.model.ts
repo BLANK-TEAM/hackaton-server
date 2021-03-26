@@ -4,7 +4,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @ObjectType()
 @Schema()
-export class User {
+export class UserModel {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
@@ -21,5 +21,5 @@ export class User {
     avatarUrl: string;
 }
 
-export type UserDocument = User & Document;
-export const UserSchema = SchemaFactory.createForClass(User);
+export type UserDocument = UserModel & Document;
+export const UserSchema = SchemaFactory.createForClass(UserModel);
