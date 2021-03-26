@@ -9,7 +9,11 @@ export class AuthController {
 
     @Post('login')
     login(@Req() req: Request): { access_token: string }  {
+        console.log(req)
         const user = { name: req.body.name, password: req.body.password };
-        return this.authService.login(user as UserModel)
+        console.log(user)
+        const res = this.authService.login(user as UserModel);
+        console.log(res);
+        return res;
     }
 }
