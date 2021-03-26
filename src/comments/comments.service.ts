@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema } from 'mongoose';
 import { CreateCommentInput, UpdateCommentInput } from './comment.input';
-import { Comment, CommentDocument } from './models/comment.model';
+import { CommentModel, CommentDocument } from './models/comment.model';
 
 @Injectable()
 export class CommentsService {

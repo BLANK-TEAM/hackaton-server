@@ -1,8 +1,7 @@
-import {Field} from '@nestjs/graphql'
-import {Prop, SchemaFactory} from '@nestjs/mongoose'
-import {EventModel} from '../../event/models/event.model'
-import {Document} from "mongoose"
-import {OrganizationModel} from '../../organization/models/organization.model'
+import {Field} from '@nestjs/graphql';
+import {Prop, SchemaFactory} from '@nestjs/mongoose';
+import {Document} from 'mongoose';
+import {CommentModel} from '../../comments/models/comment.model';
 
 export class PostModel {
 
@@ -14,8 +13,9 @@ export class PostModel {
     @Prop()
     description: string;
 
-    //TODO
-    //comment
+    @Field(() => [CommentModel])
+    @Prop()
+    comments: CommentModel[];
 }
 
 export type PostDocument = PostModel & Document;

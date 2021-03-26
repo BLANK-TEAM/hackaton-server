@@ -5,7 +5,7 @@ import { User } from 'src/users/models/user.model';
 
 @ObjectType()
 @Schema()
-export class Comment {
+export class CommentModel {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 

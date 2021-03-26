@@ -1,13 +1,6 @@
-// type Post {
-//     id: ID!
-//     title: String
-//     description: String
-//     comments: [Comment]
-// }
-
-
 import {Field, InputType} from '@nestjs/graphql';
 import {Schema as MongooseSchema} from "mongoose"
+import {CommentModel} from '../comments/models/comment.model'
 
 @InputType()
 export class CreatePostInput {
@@ -18,9 +11,8 @@ export class CreatePostInput {
     @Field(() => String)
     description: string;
 
-    //TODO
-    //comment
-
+    @Field(() => [CommentModel])
+    comments: CommentModel[];
 }
 
 @InputType()
@@ -31,10 +23,10 @@ export class ListPostInput {
     title?: string;
 
     @Field(() => String, { nullable: true })
-    description: string;
+    description?: string;
 
-    //TODO
-    //comment
+    @Field(() => [CommentModel])
+    comments?: CommentModel[];
 
 }
 
@@ -46,9 +38,9 @@ export class UpdatePostInput {
     title?: string;
 
     @Field(() => String, { nullable: true })
-    description: string;
+    description?: string;
 
-    //TODO
-    //comment
+    @Field(() => [CommentModel])
+    comments?: CommentModel[];
 
 }

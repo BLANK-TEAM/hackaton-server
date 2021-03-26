@@ -3,6 +3,8 @@ import {EventModel} from '../../event/models/event.model'
 import {ObjectType} from 'type-graphql'
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose'
 import {Document, Schema as MongooseSchema} from 'mongoose'
+import {PostModel} from '../../post/models/post.model'
+import {CommentModel} from '../../comments/models/comment.model'
 
 @ObjectType()
 @Schema()
@@ -22,9 +24,13 @@ export class OrganizationModel {
     @Prop()
     events: EventModel[];
 
-    //TODO
-    // @Field(() => Post) @Prop()
-    //@Field(() => comments) @Prop()
+    @Field(() => [PostModel])
+    @Prop()
+    posts: PostModel[];
+
+    @Field(() => [CommentModel])
+    @Prop()
+    comments: CommentModel[];
 }
 
 export type OrgDocument = OrganizationModel & Document;

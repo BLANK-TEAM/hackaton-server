@@ -3,8 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CommentsResolver } from '../comments.resolver';
 import { CommentsService } from '../comments.service';
 
-import { Comment, CommentSchema } from '../../comments/models/comment.model';
-
 @Module({
     providers: [CommentsService, CommentsResolver],
     exports: [CommentsService]

@@ -12,6 +12,8 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {EventModel} from '../event/models/event.model';
 import {Schema as MongooseSchema} from 'mongoose';
+import {PostModel} from '../post/models/post.model'
+import {CommentModel} from '../comments/models/comment.model'
 
 @InputType()
 export class CreateOrgInput {
@@ -24,9 +26,11 @@ export class CreateOrgInput {
     @Field(() => [EventModel])
     events: EventModel[];
 
-    //TODO
-    // @Field(() => Post);
-    //@Field(() => comments);
+    @Field(() => [PostModel])
+    posts: PostModel[];
+
+    @Field(() => [CommentModel])
+    comments: CommentModel[]
 }
 
 @InputType()
@@ -42,9 +46,11 @@ export class ListOrgInput {
     @Field(() => [EventModel], { nullable: true })
     events?: EventModel[];
 
-    //TODO
-    // @Field(() => Post, { nullable: true });
-    //@Field(() => comments, { nullable: true });
+    @Field(() => [PostModel])
+    posts?: PostModel[];
+
+    @Field(() => [CommentModel])
+    comments?: CommentModel[]
 }
 
 @InputType()
@@ -60,7 +66,9 @@ export class UpdateOrgInput {
     @Field(() => [EventModel], { nullable: true })
     events?: EventModel[];
 
-    //TODO
-    // @Field(() => Post, { nullable: true });
-    //@Field(() => comments, { nullable: true });
+    @Field(() => [PostModel])
+    posts?: PostModel[];
+
+    @Field(() => [CommentModel])
+    comments?: CommentModel[]
 }
