@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseGuards } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema } from 'mongoose';
+import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
 import { User, UserDocument } from './models/user.model';
 import { CreateUserInput, UpdateUserInput, ListUserInput } from './user.inputs';
+const bcrypt = require("bcryptjs");
 
 @Injectable()
 export class UsersService {
@@ -15,11 +17,23 @@ export class UsersService {
     }
 
     async getAllUsers() {
-        return this.userModel.find({});
+        return await this.userModel.find({});
+    }
+
+    @UseGuards(LocalAuthGuard)
+    async getUserByName(name: string) {
+        return await this.userModel.findOne({ name: name }).exec();
     }
 
     async createUser(payload: CreateUserInput) {
-        const newUser = new this.userModel(payload);
+        const hashedPassword = await bcrypt.hash(payload?.password, 10);
+        const user = {
+            name: payload.name,
+            password: hashedPassword,
+            description: payload.description,
+            avatarUrl: payload.avatarUrl,
+        }
+        const newUser = new this.userModel(user);
         return await newUser.save();
     }
 
