@@ -11,6 +11,7 @@ import { UsersService } from './users/users.service';
 import { AuthModule } from './auth/auth.module';
 import { CommentsResolver } from './comments/comments.resolver';
 import { CommentsService } from './comments/comments.service';
+import {EventModule} from './event/event.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CommentsService } from './comments/comments.service';
     }),
     MongooseModule.forRoot(MONGO_URI),
     UserModule,
+    EventModule,
     AuthModule,
   ],
   controllers: [AppController],
