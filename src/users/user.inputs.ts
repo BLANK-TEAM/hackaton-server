@@ -1,10 +1,15 @@
 import { Field, InputType } from '@nestjs/graphql';
 import { Schema as MongooseSchema } from 'mongoose';
+import {UserType} from './types'
 
 @InputType()
 export class CreateUserInput {
     @Field(() => String)
     name: string;
+
+    @Field(() => UserType)
+    userType: UserType
+
 
     @Field(() => String)
     password?: string;
@@ -22,7 +27,10 @@ export class ListUserInput {
 
     @Field(() => String, { nullable: true })
     name?: string;
-    
+
+    @Field(() => UserType, {nullable: true})
+    userType: UserType
+
     @Field(() => String, { nullable: true })
     description?: string;
 
@@ -36,6 +44,9 @@ export class UpdateUserInput {
 
     @Field(() => String, { nullable: true })
     name?: string;
+
+    @Field(() => UserType, {nullable: true})
+    userType?: UserType
 
     @Field(() => String, { nullable: true })
     description?: string;
