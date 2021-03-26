@@ -8,6 +8,7 @@ import { MONGO_URI } from './config/config';
 import { UserModule } from './users/models/user.module';
 import { UsersResolver } from './users/users.resolver';
 import { UsersService } from './users/users.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UsersService } from './users/users.service';
     }),
     MongooseModule.forRoot(MONGO_URI),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
