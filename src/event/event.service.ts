@@ -1,20 +1,20 @@
-import {Injectable} from '@nestjs/common'
-import {InjectModel} from '@nestjs/mongoose'
-import {UserModel} from '../users/models/user.model'
-import {EventDocument, EventModel} from './models/event.model'
-import {Model, Schema as MongooseSchema} from 'mongoose'
-import {CreateEventInput, ListEventInput} from './event.input'
+import { Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+import { UserModel } from '../users/models/user.model'
+import { EventDocument, EventModel } from './models/event.model'
+import { Model, Schema as MongooseSchema } from 'mongoose'
+import { CreateEventInput, ListEventInput } from './event.input'
 
 @Injectable()
 export class EventService {
     constructor(
         @InjectModel(UserModel.name)
         private readonly eventModel: Model<EventDocument>
-    ) {}
+    ) { }
 
     async list(filters: ListEventInput) {
-        return this.eventModel
-            .find({...filters})
+        return await this.eventModel
+            .find({ ...filters })
             .exec();
     }
 
