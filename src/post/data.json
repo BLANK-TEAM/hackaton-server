@@ -1,0 +1,131 @@
+{
+    "title": "Who are going here",
+    "comments": []
+}
+
+
+{
+    "name": "Tim Root",
+    "description": "Instagram Bio",
+    "avatarUrl": "///",
+    "events": [],
+    "posts": [],
+    "comments": [
+        {
+            "user": {
+                "name": "Tim Root",
+                "description": "Who am i?",
+                "avatarUrl": "",
+                "events": [],
+                "posts": [],
+            },
+            "text": "Hello everybody!"
+        }
+    ]
+}
+{
+    "name": "Tim Root",
+    "description": "Amazing Bio",
+    "avatarUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.broadcastnow.co.uk%2Fhome%2Fhot-shots-2017-business%2F5121809.article&psig=AOvVaw3afLrA5nf9VX4aJh3unZHx&ust=1616939495550000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOi3zJTP0O8CFQAAAAAdAAAAABAO",
+    "events": [],
+    "posts": [
+        {
+            "title": "Who are going here",
+            "comments": []
+        }
+    ],
+    "comments": [
+        {
+            "user": {
+                "name": "Tim Root",
+                "description": "Who am i?",
+                "avatarUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.broadcastnow.co.uk%2Fhome%2Fhot-shots-2017-business%2F5121809.article&psig=AOvVaw3afLrA5nf9VX4aJh3unZHx&ust=1616939495550000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOi3zJTP0O8CFQAAAAAdAAAAABAO",
+                "events": [],
+                "posts": [],
+                "comments": []
+            },
+            "text": "Hello everybody!"
+        }
+    ]
+}
+
+{
+    "name": "Bob Marley",
+    "description": "Love music",
+    "avatarUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftheconversation.com%2Funder-the-influence-of-bob-marley-the-timeless-music-man-63347&psig=AOvVaw2UJLReCYZwCuYgz3dOxsqQ&ust=1616939425610000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPCBvPrO0O8CFQAAAAAdAAAAABAD",
+    "events": [],
+    "posts": [],
+    "comments": [
+        {
+            "user": {
+                "name": "",
+                "description": "Who am i?",
+                "avatarUrl": "",
+                "events": [],
+                "posts": [],
+                "comments": []
+            },
+            "text": "Hi!"
+        }
+    ]
+}
+
+
+{
+    "photoUrls": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F675117800382781542%2F&psig=AOvVaw0Fa0ISM-pvUq9IZ0QTa6kM&ust=1616939232446000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDQvJfO0O8CFQAAAAAdAAAAABAI",
+    "title": "Hackathon",
+    "description": "Online Kharkiv Hackathon 2021",
+    "type": "Competition",
+    "tags": [
+        "hackathon",
+        "online",
+        "competition"
+    ],
+    "organization": {
+        "name": "Beetroot",
+        "description": "IT company",
+        "events": [
+            {
+                "photoUrls": "///",
+                "title": "Hackathon",
+                "description": "Online Kharkiv Hackathon 2021",
+                "type": "Competition",
+                "tags": [
+                    "hackathon",
+                    "online",
+                    "competition"
+                ],
+                "organization": ""
+            }
+        ],
+        "comments": [],
+        "going": [
+            {
+                "name": "Tim Root",
+                "description": "Amazing Bio",
+                "avatarUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.broadcastnow.co.uk%2Fhome%2Fhot-shots-2017-business%2F5121809.article&psig=AOvVaw3afLrA5nf9VX4aJh3unZHx&ust=1616939495550000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOi3zJTP0O8CFQAAAAAdAAAAABAO",
+                "events": [],
+                "posts": [
+                    {
+                        "title": "Who are going here",
+                        "comments": []
+                    }
+                ],
+                "comments": [
+                    {
+                        "user": {
+                            "name": "Tim Root",
+                            "description": "Who am i?",
+                            "avatarUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.broadcastnow.co.uk%2Fhome%2Fhot-shots-2017-business%2F5121809.article&psig=AOvVaw3afLrA5nf9VX4aJh3unZHx&ust=1616939495550000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOi3zJTP0O8CFQAAAAAdAAAAABAO",
+                            "events": [],
+                            "posts": [],
+                            "comments": []
+                        },
+                        "text": "Hello everybody!"
+                    }
+                ]
+            }
+        ],
+        "date": "3.27.2021"
+    }
+}

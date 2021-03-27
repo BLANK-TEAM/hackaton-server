@@ -11,7 +11,9 @@ import { UsersService } from './users/users.service';
 import { AuthModule } from './auth/auth.module';
 import { CommentsResolver } from './comments/comments.resolver';
 import { CommentsService } from './comments/comments.service';
-import {EventModule} from './event/event.module'
+import { EventModule } from './event/event.module'
+import { CommentModule } from './comments/models/comment.module';
+import { OrganizationModule } from './organization/organization.module';
 
 @Module({
   imports: [
@@ -23,8 +25,10 @@ import {EventModule} from './event/event.module'
     UserModule,
     EventModule,
     AuthModule,
+    CommentModule,
+    OrganizationModule
   ],
   controllers: [AppController],
-  providers: [AppService, CommentsResolver, CommentsService],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

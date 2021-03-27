@@ -7,8 +7,8 @@ import { CommentModel, CommentDocument } from './models/comment.model';
 @Injectable()
 export class CommentsService {
     constructor(
-        @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
-    ) {}
+        @InjectModel(CommentModel.name) private commentModel: Model<CommentDocument>,
+    ) { }
 
     async add(payload: CreateCommentInput) {
         const newComment = new this.commentModel(payload);

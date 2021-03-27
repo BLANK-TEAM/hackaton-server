@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import {EventModel, EventSchema} from './models/event.model'
-import {EventService} from './event.service'
-import {EventResolver} from './event.resolver'
+import { EventModel, EventSchema } from './models/event.model'
+import { EventService } from './event.service'
+import { EventResolver } from './event.resolver'
+import { UserModule } from 'src/users/models/user.module';
+import { OrganizationModule } from 'src/organization/organization.module';
+import { CommentModule } from 'src/comments/models/comment.module';
 
 @Module({
     imports: [
@@ -11,4 +14,4 @@ import {EventResolver} from './event.resolver'
     providers: [EventService, EventResolver],
     exports: [EventService]
 })
-export class EventModule {}
+export class EventModule { }

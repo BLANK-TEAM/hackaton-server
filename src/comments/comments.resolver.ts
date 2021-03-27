@@ -4,28 +4,28 @@ import { CommentModel } from './models/comment.model';
 import { Schema as MongooseSchema } from 'mongoose';
 import { CreateCommentInput, UpdateCommentInput } from './comment.input';
 
-@Resolver(() => Comment)
+@Resolver(() => CommentModel)
 export class CommentsResolver {
-    constructor(private readonly commentsService: CommentsService) {}
+    constructor(private readonly commentsService: CommentsService) { }
 
-    @Query(() => Comment)
+    @Query(() => CommentModel)
     async comment(
         @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
     ) {
         return this.commentsService.getById(_id);
     }
 
-    @Mutation(() => Comment)
+    @Mutation(() => CommentModel)
     async createComment(@Args('payload') payload: CreateCommentInput) {
         return this.commentsService.add(payload);
     }
 
-    @Mutation(() => Comment)
+    @Mutation(() => CommentModel)
     async updateComment(@Args('payload') payload: UpdateCommentInput) {
         return this.commentsService.update(payload);
     }
 
-    @Mutation(() => Comment)
+    @Mutation(() => CommentModel)
     async deleteComment(
         @Args('_id', { type: () => String }) _id: MongooseSchema.Types.ObjectId,
     ) {

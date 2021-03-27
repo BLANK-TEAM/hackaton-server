@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { User } from 'src/users/models/user.model';
+import { UserModel } from 'src/users/models/user.model';
 
 @ObjectType()
 @Schema()
@@ -9,14 +9,14 @@ export class CommentModel {
     @Field(() => String)
     _id: MongooseSchema.Types.ObjectId;
 
-    @Field(() => User)
+    @Field(() => UserModel)
     @Prop()
-    user: User;
+    user: UserModel;
 
     @Field(() => String)
     @Prop()
     text: string;
 }
 
-export type CommentDocument = Comment & Document;
-export const CommentSchema = SchemaFactory.createForClass(Comment);
+export type CommentDocument = CommentModel & Document;
+export const CommentSchema = SchemaFactory.createForClass(CommentModel);

@@ -1,8 +1,10 @@
-import {Field} from '@nestjs/graphql';
-import {Prop, SchemaFactory} from '@nestjs/mongoose';
-import {Document} from 'mongoose';
-import {CommentModel} from '../../comments/models/comment.model';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { CommentModel } from '../../comments/models/comment.model';
 
+@ObjectType()
+@Schema()
 export class PostModel {
 
     @Field(() => String)
@@ -19,4 +21,4 @@ export class PostModel {
 }
 
 export type PostDocument = PostModel & Document;
-export const OrgSchema = SchemaFactory.createForClass(PostModel);
+export const PostSchema = SchemaFactory.createForClass(PostModel);

@@ -1,11 +1,11 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import {DateTime, EventTypes} from '../event.input'
-import {GraphQLScalarType} from 'graphql'
-import {UserModel} from '../../users/models/user.model'
-import {OrganizationModel} from '../../organization/models/organization.model'
-import {CommentModel} from '../../comments/models/comment.model'
+import { GraphQLEnumType, GraphQLScalarType } from 'graphql';
+import { UserModel } from '../../users/models/user.model';
+import { OrganizationModel } from '../../organization/models/organization.model';
+import { CommentModel } from '../../comments/models/comment.model';
+import { EventTypes, DateTime } from '../types';
 
 @ObjectType()
 @Schema()
@@ -21,7 +21,7 @@ export class EventModel {
     @Prop()
     description: string;
 
-    @Field(() => EventTypes)
+    @Field(() => String)
     @Prop()
     type: EventTypes;
 
@@ -33,21 +33,21 @@ export class EventModel {
     @Prop()
     tags: string[];
 
-    @Field(() => OrganizationModel)
-    @Prop()
-    organization: OrganizationModel
+    // @Field(() => OrganizationModel)
+    // @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'OrganizationModel' }])
+    // organization: OrganizationModel;
 
     @Field(() => [CommentModel])
-    @Prop()
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'CommentModel' }])
     comments: CommentModel[];
 
     @Field(() => [UserModel])
-    @Prop()
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'UserModel' }])
     going: UserModel[];
 
-    @Field(() => GraphQLScalarType)
+    @Field(() => String)
     @Prop()
-    date: DateTime;
+    date: String;
 
 }
 

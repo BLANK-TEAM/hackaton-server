@@ -1,10 +1,5 @@
-import { GraphQLScalarType } from "graphql";
+import { GraphQLEnumType, GraphQLScalarType } from "graphql";
 
-export enum EventTypes {
-    music,
-    party,
-    education,
-    sport,
-}
 
+export type EventTypes = 'music' | 'party' | 'education' | 'sport';
 export type DateTime = GraphQLScalarType;

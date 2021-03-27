@@ -1,0 +1,33 @@
+{
+    "name": "Privat Bank",
+    "description": "Bank",
+    "events": [
+        {
+            "title": "Financial conference",
+            "photoUrls": [
+                "https://i0.wp.com/itc.ua/wp-content/uploads/2020/06/privat-1.png"
+            ],
+            "description": "Learn a lot of new information from best financials in Ukraine",
+            "type": "Conference",
+            "address": "Hotel Kharkiv Palace",
+            "tags": [
+                "fair",
+                "offline",
+                "it"
+            ],
+            "going": [
+                {
+                    "name": "Nikita Zakomorniy",
+                    "description": "I am student",
+                    "avatarUrl": "https://sun1-90.userapi.com/s/v1/if1/4rbDekIdY8Noy5uc7zS4tXz8P4tUTORKHRf7ljoYgVSavrxV3VcEqBfqVDKixRsU6gSka9OX.jpg?size=400x0&quality=96&crop=0,297,1367,1367&ava=1",
+                    "comments": [],
+                    "posts": []
+                }
+            ],
+            "dateStart": "15:00",
+            "dateEnd": "18:00",
+            "date": "20.05.2021",
+            "security": "verified",
+        }
+    ]
+}

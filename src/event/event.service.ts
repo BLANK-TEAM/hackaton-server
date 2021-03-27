@@ -8,7 +8,7 @@ import { CreateEventInput, ListEventInput } from './event.input'
 @Injectable()
 export class EventService {
     constructor(
-        @InjectModel(UserModel.name)
+        @InjectModel(EventModel.name)
         private readonly eventModel: Model<EventDocument>
     ) { }
 

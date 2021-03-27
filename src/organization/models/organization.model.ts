@@ -1,10 +1,9 @@
-import {Field} from '@nestjs/graphql'
-import {EventModel} from '../../event/models/event.model'
-import {ObjectType} from 'type-graphql'
-import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose'
-import {Document, Schema as MongooseSchema} from 'mongoose'
-import {PostModel} from '../../post/models/post.model'
-import {CommentModel} from '../../comments/models/comment.model'
+import { Field, ObjectType } from '@nestjs/graphql'
+import { EventModel } from '../../event/models/event.model'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Document, Schema as MongooseSchema } from 'mongoose'
+import { PostModel } from '../../post/models/post.model'
+import { CommentModel } from '../../comments/models/comment.model'
 
 @ObjectType()
 @Schema()
@@ -21,15 +20,15 @@ export class OrganizationModel {
     description: string;
 
     @Field(() => [EventModel])
-    @Prop()
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'EventModel' }])
     events: EventModel[];
 
     @Field(() => [PostModel])
-    @Prop()
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'PostModel' }])
     posts: PostModel[];
 
     @Field(() => [CommentModel])
-    @Prop()
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'CommentModel' }])
     comments: CommentModel[];
 }
 

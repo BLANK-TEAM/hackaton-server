@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import {UserType} from '../types'
+// import { UserType } from '../types'
 
 @ObjectType()
 @Schema()
@@ -13,9 +13,9 @@ export class UserModel {
     @Prop()
     name: string;
 
-    @Field(() => UserType)
-    @Prop()
-    userType: UserType;
+    // @Field(() => UserType)
+    // @Prop({ type: () => UserType })
+    // userType: UserType;
 
     @Field(() => String, { nullable: true })
     @Prop()

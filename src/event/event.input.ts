@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql'
 import { Schema as MongooseSchema } from 'mongoose';
 import { UserModel } from '../users/models/user.model'
-import { GraphQLScalarType } from 'graphql'
+import { GraphQLEnumType, GraphQLScalarType } from 'graphql'
 import { OrganizationModel } from '../organization/models/organization.model'
 import { CommentModel } from '../comments/models/comment.model'
 import { DateTime, EventTypes } from './types';
@@ -30,7 +30,7 @@ export class CreateEventInput {
     @Field(() => String)
     description: string;
 
-    @Field(() => EventTypes)
+    @Field(() => String)
     type: EventTypes;
 
     @Field(() => String)
@@ -39,17 +39,17 @@ export class CreateEventInput {
     @Field(() => [String])
     tags: string[];
 
-    @Field(() => OrganizationModel)
-    organization: OrganizationModel
+    // @Field(() => OrganizationModel)
+    // organization: OrganizationModel;
 
-    // @Field(() => )
-    // comments:
+    @Field(() => [CommentModel])
+    comments: CommentModel[]
 
     @Field(() => [UserModel])
     going: UserModel[];
 
-    @Field(() => GraphQLScalarType)
-    date: DateTime;
+    @Field(() => String)
+    date: String;
 
 }
 
@@ -60,32 +60,32 @@ export class ListEventInput {
     @Field(() => String, { nullable: true })
     title?: string;
 
-    @Field(() => [String])
-    photoUrls: string[];
+    @Field(() => [String], { nullable: true })
+    photoUrls?: string[];
 
     @Field(() => String, { nullable: true })
     description?: string;
 
-    @Field(() => EventTypes, { nullable: true })
+    @Field(() => String, { nullable: true })
     type?: EventTypes;
 
-    @Field(() => String)
+    @Field(() => String, { nullable: true })
     address?: string;
 
     @Field(() => [String], { nullable: true })
     tags?: string[];
 
-    @Field(() => OrganizationModel)
-    organization?: OrganizationModel
+    // @Field(() => OrganizationModel, { nullable: true })
+    // organization?: OrganizationModel
 
-    @Field(() => [CommentModel])
+    @Field(() => [CommentModel], { nullable: true })
     comments?: CommentModel[];
 
     @Field(() => [UserModel], { nullable: true })
     going?: UserModel[];
 
-    @Field(() => GraphQLScalarType, { nullable: true })
-    date?: DateTime;
+    @Field(() => String, { nullable: true })
+    date?: String;
 
 }
 
@@ -96,31 +96,31 @@ export class UpdateEventInput {
     @Field(() => String, { nullable: true })
     title?: string;
 
-    @Field(() => [String])
-    photoUrls: string[];
+    @Field(() => [String], { nullable: true })
+    photoUrls?: string[];
 
     @Field(() => String, { nullable: true })
     description?: string;
 
-    @Field(() => EventTypes, { nullable: true })
+    @Field(() => String, { nullable: true })
     type?: EventTypes;
 
-    @Field(() => String)
+    @Field(() => String, { nullable: true })
     address?: string;
 
     @Field(() => [String], { nullable: true })
     tags?: string[];
 
-    @Field(() => OrganizationModel)
-    organization?: OrganizationModel
+    // @Field(() => OrganizationModel, { nullable: true })
+    // organization?: OrganizationModel;
 
-    @Field(() => [CommentModel])
+    @Field(() => [CommentModel], { nullable: true })
     comments?: CommentModel[];
 
     @Field(() => [UserModel], { nullable: true })
     going?: UserModel[];
 
-    @Field(() => GraphQLScalarType, { nullable: true })
-    date?: DateTime;
+    @Field(() => String, { nullable: true })
+    date?: String;
 }
 

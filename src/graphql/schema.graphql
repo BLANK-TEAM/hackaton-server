@@ -1,10 +1,11 @@
-scalar Date
-scalar DateTime
-
 schema {
   query: Query
   mutation: Mutation
 }
+
+scalar Date
+scalar DateTime
+
 
 type Post {
   id: ID!
@@ -15,7 +16,7 @@ type Post {
 
 type User {
   id: ID!
-  name: String
+  id: String
   description: String
   avatarUrl: String
   events: [Event]
@@ -51,13 +52,34 @@ type Event {
 
 type Organization {
   id: ID!
-  name: String
+  id: String
   description: String
   events: [Event]
   posts: [Post]
   comments: [Comment] #comments about this organization
 }
 
+mutation CreateOrg($id: String!, $description: String!, $events: [Event]!
+  $posts: [Post]!, $comments: [Comment]!) {
+    createOrg(id: $id, description: $description, events: $events,
+    posts: $posts, comments: $comments) {
+      id
+      description
+      events
+      posts
+      comments
+    }
+  }
+
+mutation deleteOrg($id: ID!) {
+    deleteOrg(id: $id) {
+      id
+      description
+      events
+      posts
+      comments
+    }
+  }
 
 type Query {
   users: [User]
@@ -78,3 +100,198 @@ type Mutation {
   # (конечно будет, вам почти ничего не надо делать)
   # то реализовуйте и эти запросы
 }
+
+
+mutation CreateOrg($name: String!, $description: String!, $events: [EventInput!]!
+  $posts: [PostInput!]!, $comments: [CommentInput!]!) {
+    createOrg(payload: {
+      name: $name, 
+      description: $description, 
+      events: $events,
+      posts: $posts, 
+      comments: $comments}) {
+      name
+      description
+      events {
+        dateEnd
+      }
+      posts {
+        title
+      }
+      comments {
+        text
+      }
+    }
+  }
+
+{
+  "name": "NIX",
+  "description": "IT company",
+  "events": {
+    {
+      "title": "University Career Fair",
+      "photoUrls": [""],
+      "description": "Place to get some job offer",
+      "type": "Fair",
+      "address": "Hotel Kharkiv Palace",
+      "tags": ["fair", "offline", ["it"]],
+      "going": [
+          {
+            "name": "Maxim Budnik",
+            "description": "I fullstack JS developer",
+            "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Ramphastos_toco_Whipsnade_Zoo.jpg",
+            "comments": [],
+            "posts": []
+          }
+      ],
+      "dateStart": "9:00",
+      "dateEnd": "18:00",
+      "date": "1.1.2021",
+      "security": "verified",
+    }
+  }
+}
+
+
+
+{
+  "name": "",
+  "description": "IT company",
+  "events": {
+    {
+      "title": "University Career Fair",
+      "photoUrls": [""],
+      "description": "Place to get some job offer",
+      "type": "Fair",
+      "address": "Hotel Kharkiv Palace",
+      "tags": ["fair", "offline", ["it"]],
+      "going": [
+          {
+            "name": "Maxim Budnik",
+            "description": "I fullstack JS developer",
+            "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Ramphastos_toco_Whipsnade_Zoo.jpg",
+            "comments": [],
+            "posts": []
+          }
+      ],
+      "dateStart": "9:00",
+      "dateEnd": "18:00",
+      "date": "1.1.2021",
+      "security": "verified",
+    }
+  }
+}
+
+{
+  "name": "Privat Bank",
+  "description": "Bank",
+  "events": [
+    {
+      "title": "Financial conference",
+      "photoUrls": ["https://i0.wp.com/itc.ua/wp-content/uploads/2020/06/privat-1.png"],
+      "description": "Learn a lot of new information from best financials in Ukraine",
+      "type": "Conference",
+      "address": "Hotel Kharkiv Palace",
+      "tags": ["fair", "offline", "it"],
+      "going": [
+          {
+            "name": "Nikita Zakomorniy",
+            "description": "I am student,
+            "avatarUrl": "https://sun1-90.userapi.com/s/v1/if1/4rbDekIdY8Noy5uc7zS4tXz8P4tUTORKHRf7ljoYgVSavrxV3VcEqBfqVDKixRsU6gSka9OX.jpg?size=400x0&quality=96&crop=0,297,1367,1367&ava=1",
+            "comments": [],
+            "posts": []
+          }
+      ],
+      "dateStart": "15:00",
+      "dateEnd": "18:00",
+      "date": "20.05.2021",
+      "security": "verified",
+  }
+  ]
+}
+
+{
+      "title": "Node.js developer conference",
+      "photoUrls": ["https://coralogix.com/wp-content/uploads/2018/04/Coralogix-Nodejs-integration.jpg"],
+      "description": "Conference where you can learn a lot new information",
+      "type": "Conference",
+      "address": "Hotel Kharkiv Palace",
+      "tags": ["conference", "offline", "it"],
+      "going": [
+          {
+            "name": "Maxim Budnik",
+            "description": "I fullstack JS developer",
+            "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Ramphastos_toco_Whipsnade_Zoo.jpg",
+            "comments": [],
+            "posts": []
+          }
+      ],
+      "dateStart": "17:00",
+      "dateEnd": "19:00",
+      "date": "02.05.2021",
+      "security": "verified",
+    }
+
+
+    @Field(() => String, { nullable: true })
+    name?: string;
+
+    // @Field(() => UserType, {nullable: true})
+    // userType: UserType
+
+    @Field(() => String, { nullable: true })
+    description?: string;
+
+    @Field(() => String, { nullable: true })
+    avatarUrl?: string;
+
+@Field(() => String)
+    _id: MongooseSchema.Types.ObjectId;
+
+    @Field(() => String, { nullable: true })
+    @Prop()
+    title?: string;
+
+    @Field(() => [String], { nullable: true })
+    @Prop()
+    photoUrls: string[];
+
+    @Field(() => String, { nullable: true })
+    @Prop()
+    description?: string;
+
+    @Field(() => String, { nullable: true })
+    @Prop()
+    type?: string;
+
+    @Field(() => String, { nullable: true })
+    @Prop()
+    address?: string;
+
+    @Field(() => [String], { nullable: true })
+    @Prop()
+    tags?: string[];
+
+    @Field(() => [UserModel], { nullable: true })
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: "UserModel" })
+    going?: UserModel[];
+
+    @Field(() => String)
+    @Prop()
+    dateStart?: String
+
+    @Field(() => String)
+    @Prop()
+    dateEnd?: String
+
+    @Field(() => String)
+    @Prop()
+    price?: String
+
+    @Field(() => String)
+    @Prop()
+    security?: String
+
+    @Field(() => String, { nullable: true })
+    @Prop()
+    date?: String;
