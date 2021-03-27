@@ -6,7 +6,7 @@ import { OrganizationService } from './organization.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: OrganizationModel.name, schema: EventSchema }]),
+    MongooseModule.forFeature([{ name: OrganizationModel.name, schema: OrgSchema }]),
   ],
   providers: [OrganizationService, OrganizationResolver],
   exports: [OrganizationService]
