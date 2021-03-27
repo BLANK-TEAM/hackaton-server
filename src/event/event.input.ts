@@ -1,16 +1,11 @@
-import {Field, InputType } from '@nestjs/graphql'
+import { Field, InputType } from '@nestjs/graphql'
 import { Schema as MongooseSchema } from 'mongoose';
-import {UserModel} from '../users/models/user.model'
-import {GraphQLScalarType} from 'graphql'
-import {OrganizationModel} from '../organization/models/organization.model'
-import {CommentModel} from '../comments/models/comment.model'
+import { UserModel } from '../users/models/user.model'
+import { GraphQLScalarType } from 'graphql'
+import { OrganizationModel } from '../organization/models/organization.model'
+import { CommentModel } from '../comments/models/comment.model'
+import { DateTime, EventTypes } from './types';
 
-export enum EventTypes {
-    music,
-    party,
-    education,
-    sport,
-}
 /*
 * id: ID!
   photoUrls: [String]
@@ -23,8 +18,6 @@ export enum EventTypes {
   going: [User]
   date: DateTime
 * */
-
-export type DateTime = GraphQLScalarType;
 
 @InputType()
 export class CreateEventInput {
