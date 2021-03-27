@@ -13,7 +13,7 @@ const binaryMimeTypes: string[] = [];
 
 let cachedServer: Server;
 
-async function bootstrapServer(): Promise<Server> {
+export async function bootstrapServer(): Promise<Server> {
  if (!cachedServer) {
     const expressApp = express();
     const nestApp = await NestFactory.create(AppModule, new ExpressAdapter(expressApp))
