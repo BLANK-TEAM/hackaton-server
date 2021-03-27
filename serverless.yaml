@@ -1,0 +1,27 @@
+service:
+ name: nest-serverless-inive-demo
+
+plugins:
+ - 'serverless-plugin-typescript'
+ - serverless-plugin-optimize
+ - serverless-offline
+
+provider:
+ name: aws
+ runtime: nodejs14.x
+
+functions:
+ main: 
+   handler: src/lambda.handler
+   events:
+     - http:
+         method: any
+         path: /dev
+
+custom:
+  serverless-offline:
+    httpPort: 4002
+
+[default]
+aws_access_key_id = AKIAZ7M5WUI5LA4ALGUC 
+aws_secret_access_key = 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 
