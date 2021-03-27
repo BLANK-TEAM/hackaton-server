@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { OrganizationModel } from './models/organization.model';
 import { OrganizationService } from './organization.service';
-import { OrganizationController } from './organization.controller';
 
 @Module({
+  imports: [
+    MongooseModule.forFeature([{ name: OrganizationModel.name, schema: EventSchema }]),
+  ],
   providers: [OrganizationService],
-  controllers: [OrganizationController]
+  exports: [OrganizationService]
 })
-export class OrganizationModule {}
+export class OrganizationModule { }

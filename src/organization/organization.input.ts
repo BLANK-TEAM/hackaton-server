@@ -1,5 +1,4 @@
 
-
 // type Organization {
 //     id: ID!
 //     name: String
@@ -9,11 +8,11 @@
 //     comments: [Comment] #comments about this organization
 // }
 
-import {Field, InputType} from '@nestjs/graphql';
-import {EventModel} from '../event/models/event.model';
-import {Schema as MongooseSchema} from 'mongoose';
-import {PostModel} from '../post/models/post.model'
-import {CommentModel} from '../comments/models/comment.model'
+import { Field, InputType } from '@nestjs/graphql';
+import { EventModel } from '../event/models/event.model';
+import { Schema as MongooseSchema } from 'mongoose';
+import { PostModel } from '../post/models/post.model'
+import { CommentModel } from '../comments/models/comment.model'
 
 @InputType()
 export class CreateOrgInput {
